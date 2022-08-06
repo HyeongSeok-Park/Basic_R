@@ -52,4 +52,11 @@ x
 y <- c(a,'b',1,2,3) # 변수가 하나라도 문자가 있으면 모두 문자로 저장됨
 y
 
+# 연속된 정수 표현 - (시작숫자) : (마지막숫자) / seq(from , to , by) / seq(from , to , length.out)
+1:5
+6:-3
+seq(from = 0, to = 20, by = 2)
+seq(from = 0, to = 20, length.out = 3) # length.out : 지정한 값으로 등분함
+
+
 
