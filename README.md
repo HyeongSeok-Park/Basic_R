@@ -15,6 +15,19 @@
 - 문자열 추출 - substr('문자열',시작,끝)
 - 백터 원소 선택 - 벡터변수 [ index수 ]
 - 변수길이 - length ( 변수 )
+- 리스트를 사용하여 데이터프레임 만들기 - df <- as.data.frame(list)
+- 행 이름 변경 - rownames( df ) <- c ( 'row1', 'row2' )
+- 열 이름 변경 - colnames( df ) <- c ( 'column1', 'column2' )
+- 데이터프레임 할당 - data.frame(col1 = numeric(N), col2 = character(N), ...)
+- 행으로 합치기 - rbind(벡터, 리스트, 데이터프레임, ...)
+- 열로 합치기 - cbind( 벡터, 리스트, 데이터프레임, ... )
+- 데이터프레임 병합 - merge(df1, df2, by = '공통 column')
+- 데이터프레임 조회1 - df [df$col1 <= 3(조건식), c(레코드 변수;col index)]
+- 데이터프레임 조회2 - df[grep('value', df$col), c(출력할 column)]
+- 데이터프레임 조회3 - subset(df, select=(출력할 column), subset=(조건식))
+- 데이터프레임 열 제거 - subset( df, select = '-col' )
+- 데이터프레임 NA 포함하는 행 삭제 - na.omit( df )
+
 
 ## 2) 기초통계
 - 평균값 - mean ( 변수 )
@@ -39,12 +52,12 @@
 - 리스트에서 특정 원소 제거 - L [ [ ' ' ] ] <- NULL
 - 리스트에서 NULL 원소 제거 - 검증작업 필요
 - 데이터프레임 생성 - data.frame(리스트1, 리스트2, ... )
-- 데이터프레임 열값 불러오기 - df[ ' i ' ] / df [ [ ' i '] ] 
+- 데이터프레임 열값 불러오기 - df[ ' i ' ] / df [ [ ' i '] ] / df [ , 열번호]
+- 데이터프레임 행값 불러오기 - df [ 행번호 ,  ]
+- 데이터프레임 특정값 불러오기 - df [ 행번호 , 열번호]
 - 행열 만들기 - matrix( data, 행수, 열수) / dim ( 행열변수 ) <- c ( 행수 , 열수)
 - 행열 차원 출력 - dim ( 행열변수 )
 - 행열 대각선값 출력 - diag( 행열변수 )
-- 행 이름 부여 - rownames( 행열변수 ) <- c ( 'row1', 'row2' )
-- 열 이름 부여 - colnames( 행열변수 ) <- c ( 'column1', 'column2' )
 - 특정 행/열/원소값 출력 - matrix [ 행수 , 열수 ]
 - 결과값을 파일로 저장하고 생성 - sink() 함수 / cat( ' ' , file = ' ' )
 - 파일 목록 보기 - list.files()

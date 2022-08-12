@@ -48,6 +48,108 @@ x[-2] # 해당 자리수를 제외하고 모두 출력
 # 변수길이 - length ( 변수 )
 length(x)
 
+# 리스트를 사용하여 데이터프레임 만들기 - df <- as.data.frame(list)
+new1 <- data.frame(a=1, b=2, c='3')
+new1
+
+a <- c(1,2,3)
+b <- c('a','b','c')
+list1 <- list(a,b)
+names(list1) <- c('column1','column2')
+list1
+new2 <- as.data.frame(list1)
+new2
+
+# 행 이름 변경 - rownames( df ) <- c ( 'row1', 'row2' )
+new2
+rownames(new2) <- c('row1', 'row2', 'row3')
+new2
+
+# 열 이름 변경 - colnames( df ) <- c ( 'column1', 'column2' )
+colnames(new2) <- c('col1', 'col2')
+new2
+
+# 데이터프레임 할당 - data.frame(col1 = numeric(N), col2 = character(N), ...)
+N = 10
+dtfm <- data.frame(dosage = numeric(N), dnas = character(N), bnd = numeric(N))
+dtfm 
+
+# 행으로 합치기 - rbind(벡터, 리스트, 데이터프레임, ...)
+new1 <- c(1,2,3,4)
+names(new1) <- c('a','b','c','d') # 벡터상태일때 컬럼명 작성
+new1
+new2 <- c(5,6,7,8)
+comb1 <- rbind(new1, new2)
+comb1 # 벡터의 합은 벡터를 가로로 눕힌 형태에서 합쳐진다.
+
+list1 <- list(new1, new2)
+list1
+new3 <- c('a','b','c','d')
+new4 <- c('e','f','g','h')
+list2 <- list(new3, new4)
+list2
+comb2 <- rbind(new3, new4, new1)
+comb2 # rbind의 경우 열(column)의 수만 같으면 서로 다른 유형끼리도 합칠 수 있다.
+      # 리스트의 cbind의 경우 데이터 형태가 하나로 통일된다.
+
+# 열로 합치기 - cbind( 벡터, 리스트, 데이터프레임, ... )
+new1 <- c(1,2,3,4) 
+new2 <- c(5,6,7,8)
+comb3 <- cbind(new1, new2) 
+comb3  # 벡터의 합은 벡터를 세로로 세운 형태에서 합쳐진다.
+
+df1 <- data.frame(new1, new2)
+df1 # 벡터로 생성한 데이터프레임은 cbind와 유사하다.
+df2 <- data.frame(new3, new4)
+df2
+comb4 <- cbind(df1,df2, new1)
+comb4 # cbind의 경우 행(row)의 수만 같으면 서로 다른 유형끼리도 합칠 수 있다.
+
+# 데이터프레임 병합 - merge(df1, df2, by = '공통 column')
+df3 <- data.frame(new1, new2)
+df3
+df4 <- data.frame(new1, new4)
+df4
+comb5 <- merge(df4,df3,by='new1') 
+comb5 # 데이터프레임 입력 순서에 따라 생성값의 형태가 달라짐
+
+new1 <- c(1,2,11,12)
+df5 <- data.frame(new1,new3)
+df5
+comb6 <- merge(comb5, df5, by='new1')
+comb6 # 해당 컬럼에서 같은 값이 있는 행만 합쳐진다.
+
+# 데이터프레임 조회1 - df [df$col1 <= 3(조건식), c(레코드 변수;col index)]
+comb5
+colnames(comb5) <- c('col1', 'col2','col3')
+comb5
+comb5[comb5$col1 <= 3 & comb5$col3 >= 5, c(2,3)]
+comb5[comb5$col1 == 3, c(2,3)]
+
+# 데이터프레임 조회2 - df[grep('value', df$col), c(출력할 column)]
+comb5
+comb5[grep('g', comb5$col2, ignore.case=F), c(1:3)]
+
+# 데이터프레임 조회3 - subset(df, select=(출력할 column), subset=(조건식))
+subset(comb5, select=c(1,2), subset=(col1 < 3 & col3 > 5))
+
+# 데이터프레임 열 제거 - subset( df, select = '-col' )
+comb5
+subset(comb5, select=-col1)
+
+# 데이터프레임 NA 포함하는 행 삭제 - na.omit( df )
+na.omit(comb5)
+
+# 데이터 형태 변환 - charater/complex/integer/numeric/logical/data.frame/list/matrix/vector
+as.charater(변수) # 문자형 자료로 변경
+as.complex(변수) # 허수를 포함한 자료 형태로 변경
+as.integer(변수) # 정수형 자료로 변경
+as.numeric(변수) # 실수형 자료로 변경
+as.logical(변수) # 논리형 자료로 변경
+
+
+as.data.frame(변수) # 데이터프레임형 자료로 변경
+# 열 데이터(벡터,리스트,의 경우 위의 명령어를 그대로 사용하면 된다.
 
 # 2) 기초 통계
 

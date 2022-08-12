@@ -73,11 +73,20 @@ df1
 df2 <- data.frame(x=1:3, y=c('Tom','Yoon','Kim'))
 df2
 
-# 데이터프레임 열값 불러오기 - df[ ' i ' ] / df [ [ ' i '] ]
+# 데이터프레임 열값 불러오기 - df[ ' i ' ] / df [ [ ' i '] ] / df [ , 열번호]
 df2[1]
 df2[2]
 df2[[1]]
-df2[[2]]
+df2['new3']
+df2$new4
+df2[,1]
+
+# 데이터프레임 행값 불러오기 - df [ 행번호 ,  ]
+df2[1,]
+
+# 데이터프레임 특정값 불러오기 - df [ 행번호 , 열번호]
+df2
+df2[3,2]
 
 # 행열 만들기 - matrix( data, 행수, 열수) / dim ( 행열변수 ) <- c ( 행수 , 열수)
 a <- matrix(1:20, 4, 5)
@@ -92,14 +101,6 @@ dim(b)
 
 # 행열 대각선값 출력 - diag( 행열변수 )
 diag(b)
-
-# 행 이름 부여 - rownames( 행열변수 ) <- c ( 'row1', 'row2' )
-rownames(b) <- c('row1', 'row2')
-b
-
-# 열 이름 부여 - colnames( 행열변수 ) <- c ( 'column1', 'column2' )
-colnames(b) <- c('column1', 'column2', 'column3', 'column4')
-b
 
 # 특정 행/열/원소값 출력 - matrix [ 행수 , 열수 ]
 b
