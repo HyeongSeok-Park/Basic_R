@@ -140,16 +140,77 @@ subset(comb5, select=-col1)
 # 데이터프레임 NA 포함하는 행 삭제 - na.omit( df )
 na.omit(comb5)
 
-# 데이터 형태 변환 - charater/complex/integer/numeric/logical/data.frame/list/matrix/vector
+# 자료형 데이터 형태 변환 - charater / complex / integer / numeric / logical
 as.charater(변수) # 문자형 자료로 변경
 as.complex(변수) # 허수를 포함한 자료 형태로 변경
 as.integer(변수) # 정수형 자료로 변경
 as.numeric(변수) # 실수형 자료로 변경
 as.logical(변수) # 논리형 자료로 변경
 
+#############################################################
+# 데이터 구조 변환 - data.frame / list / matrix / vector
 
-as.data.frame(변수) # 데이터프레임형 자료로 변경
-# 열 데이터(벡터,리스트,의 경우 위의 명령어를 그대로 사용하면 된다.
+# data.frame 형태로 변경
+# vector -> data.frame
+new1
+as.data.frame(new1)        # 1열 데이터프레임 - as.data.frame(vec)
+as.data.frame(rbind(new1)) # 1행 데이터프레임 - as.data.frame(rbind(vex))
+# list -> data.frame
+list2
+names(list2) <- c('col1','col2')
+as.data.frame(list2)          # 열 형태로 데이터프레임 변환 - as.data.frame(list)
+rbind(list2[[1]], list2[[2]]) # 행 형태로 데이터프레임 변환 - rbind(list1[[i]], list2[[2]], ... )
+# matrix -> data.frame
+a <- matrix(1:20, 4, 5)
+a
+as.data.frame(a) # 행렬과 같은 형태 변환 - as.data.frame(mat)
+t(as.data.frame(a)) # 데이터프레임 축 변경 - t(df)
+
+# list 형태로 변경
+# vector / matrix / data.frame -> list
+new1
+as.list(new1) # as.list(vec/mat/df)
+a
+as.list(a)
+comb5
+as.list(comb5)
+
+# vector 형태로 변경
+# list -> vector
+list2
+unlist(list2) # 벡터 형태로 변환 - unlist(list)
+# matrix -> vector
+a
+as.vector(a) # 벡터 형태로 변환 - as.vector(mat)
+# data.frame -> vector
+comb5
+comb5[[1]] # df[1] : 데이터프레임 형태
+           # df[[1]] : 벡터 형태
+comb5[,1]  # 1열 벡터로 출력 - df[[i]] / df[,i]
+comb5[1,]  # 1행 벡터로 출력 - df[i,]
+
+# matrix 형태로 변경
+# vector -> matrix
+new1
+cbind(new1)      # 1열 행렬로 출력 - cbind(a)
+as.matrix(new1)  # 1열 행렬로 출력 - as.matrix(a)
+matrix(new1,4,1) # 1열 행렬로 출력 - matrix(a, i, j)
+matrix(new1,1,4) # 1행 행렬로 출력 - matrix(a, i, j)
+# list -> matrix
+list2
+list3 <- c(1,2,3,4)
+as.matrix(list3)        # 1열 행렬로 출력 - as.matrix(list)
+as.matrix(cbind(list2[[1]], list2[[2]])) # 여러 리스트 값이 있을 때 열 형태로 행렬 출력 - as.matirx(cbind(list[[1]], list[[2]], ... ))
+as.matrix(rbind(list3)) # 1행 행렬로 출력 - as.matrix(rbind(list))
+as.matrix(rbind(list2[[1]], list2[[2]])) # 여러 리스트 값이 있을 때 행 형태로 행렬 출력 - as.matrix(rbind(list[[1]], list[[2]]))
+matrix(unlist(list2),4,2) # n x m 행렬로 출력 - matrix(list, n, m)
+t(matrix(unlist(list2),4,2)) # 리스트 축 변경 - t(mat)
+# data.frame -> matrix
+comb5
+as.matrix(comb5) # as.matrix(df) 
+                 # 행렬로 변경시 하나의 데이터형태로 바뀜
+#############################################################
+
 
 # 2) 기초 통계
 
@@ -178,4 +239,10 @@ cov(y, z)
 # 변수간의 관계의 정도와 방향을 하나의 수치로 요약해 표시해 주는 지표. 상관계수는 -1에서 1 사이의 값으로 나타낸다. 이때 0에 가까울수록 상관관계는 낮아지는 것이며, -1이나 +1에 가까울수록 상관관계는 높아진다.
 cor(y, z)
 
+# 데이터 요약 - summary(df)
+data("trees")
+trees
+summary(trees)
 
+# 6행까지 데이터 출력 - head(df)
+head(trees)

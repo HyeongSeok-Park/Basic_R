@@ -133,11 +133,21 @@ list.files()
 # 테이블로 된 파일 읽기 - read.table('파일명', sep = '구분자')
 read.table('파일명', sep = '구분자')
 
-# CSV 파일 출력 - write.csv(변수, '파일명', row.names = F)
-write.csv(df, 'test3', row.names = F)
+# CSV 파일 저장 - write.csv(변수, '파일명.csv', row.names = F)
+df <- matrix(1:20, 4,5)
+df <- data.frame(df)
+df
+write.csv(df, 'test3.csv', row.names = F)
 
-# CSV 파일 읽기 - read.csv('파일명', header = T/F)
+# CSV 파일 불러오기 - read.csv('파일명', header = T/F)
 read.csv('test3', header = T) # 첫째행을 Column명으로 지정하고 출력
+
+# R 파일 저장 - save(변수, file = '파일명.Rdata')
+save(df, file = 'test4.Rdata')
+
+# R 파일 불러오기 -  load('경로/.../파일명') / source('경로/.../파일명')
+load("E:/R/files/Basic_R/test4.Rdata")
+source('E:/R/files/Basic_R/test4.Rdata')
 
 # 웹에서 파일 출력 - read.csv('http://www. ... .csv') / read.table(' 주소 ')
 read.csv('http://www. ... .csv')
@@ -147,6 +157,10 @@ read.table('http://www. ... .table')
 library(XML)
 url <- 'http://www. ... table.html'
 t <- readHTMLTable(url)
+
+# R에 내장된 데이터 불러오기 - data ( ' ' )
+data("women")
+women
 
 # 특정 숫자나 변수 반복 - rep ( 숫자/변수 , time/each = 반복횟수)
 rep(1:4, time = 3) # 해당 변수 전체를 3번 반복

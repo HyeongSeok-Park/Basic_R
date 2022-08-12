@@ -27,6 +27,50 @@
 - 데이터프레임 조회3 - subset(df, select=(출력할 column), subset=(조건식))
 - 데이터프레임 열 제거 - subset( df, select = '-col' )
 - 데이터프레임 NA 포함하는 행 삭제 - na.omit( df )
+- 자료형 데이터 형태 변환 
+  1) as.charater
+  2) as.complex
+  3) as.integer
+  4) as.numeric
+  5) as.logical
+- 데이터 구조 변환 - data.frame / list / matrix / vector
+  1) data.frame 형태로 변경
+    a) vector -> data.frame
+      - 1열 데이터프레임 - as.data.frame(vec)
+      - 1행 데이터프레임 - as.data.frame(rbind(vex))
+    b) list -> data.frame
+      - 열 형태로 데이터프레임 변환 - as.data.frame(list)
+      - 행 형태로 데이터프레임 변환 - rbind(list1[[i]], list2[[2]], ... )
+    c) matrix -> data.frame
+      - 행렬과 같은 형태 변환 - as.data.frame(mat)
+      - 참고 : 데이터프레임 축 변경 - t(df)
+      
+  2) list 형태로 변경
+    - as.list(vec/mat/df)
+    
+  3) vector 형태로 변경
+    a) list -> vector 
+      - 벡터 형태로 변환 - unlist(list)
+    b) matrix -> vector
+      - 벡터 형태로 변환 - as.vector(mat)
+    c) data.frame -> vector
+      - 1열 벡터로 출력 - df[[i]] / df[,i]
+      - 1행 벡터로 출력 - df[i,]
+
+  4) matrix 형태로 변경
+    a) vector -> matrix
+      - 1열 행렬로 출력 - cbind(a)
+      - 1열 행렬로 출력 - as.matrix(a)
+      - 1열 행렬로 출력 - matrix(a, i, j)
+      - 1행 행렬로 출력 - matrix(a, i, j)
+    b) list -> matrix
+      - 1열 행렬로 출력 - as.matrix(list)
+      - 여러 리스트 값이 있을 때 열 형태로 행렬 출력 - as.matirx(cbind(list[[1]], list[[2]], ... ))
+      - 1행 행렬로 출력 - as.matrix(rbind(list))
+      - 여러 리스트 값이 있을 때 행 형태로 행렬 출력 - as.matrix(rbind(list[[1]], list[[2]]))
+      - n x m 행렬로 출력 - matrix(list, n, m)
+    c) data.frame -> matrix
+      - as.matrix(df)
 
 
 ## 2) 기초통계
@@ -62,11 +106,13 @@
 - 결과값을 파일로 저장하고 생성 - sink() 함수 / cat( ' ' , file = ' ' )
 - 파일 목록 보기 - list.files()
 - 테이블로 된 파일 읽기 - read.table('파일명', sep = '구분자')
-- CSV 파일 읽기 - read.csv('파일명', header = T/F)
+- CSV 파일 저장 - write.csv(변수, '파일명.csv', row.names = F)
+- CSV 파일 불러오기 - read.csv('파일명', header = T/F)
+- R 파일 저장 - save(변수, file = '파일명.Rdata')
+- R 파일 불러오기 -  load('경로/.../파일명') / source('경로/.../파일명')
 - 웹에서 데이터 읽어오기 - read.csv('http://www. ... .csv') / read.table(' 주소 ')
 - library(XML) / url <- ' 주소 ' / t <- readHTMLTable(url)
-- 
-- 
+- R에 내장된 데이터 불러오기 - data ( ' ' )
 - 특정 숫자나 변수 반복 - rep ( 숫자/변수 , time/each = 반복횟수)
 - 구분자로 문자 나누기 - paste( 문자1, 문자2, ..., sep = '구분자' )
 - for문 활용
