@@ -69,7 +69,7 @@ new2
 colnames(new2) <- c('col1', 'col2')
 new2
 
-# 데이터프레임 할당 - data.frame(col1 = numeric(N), col2 = character(N), ...)
+# 데이터프레임 만들기 - data.frame(col1 = numeric(N), col2 = character(N), ...)
 N = 10
 dtfm <- data.frame(dosage = numeric(N), dnas = character(N), bnd = numeric(N))
 dtfm 
@@ -210,15 +210,46 @@ comb5
 as.matrix(comb5) # as.matrix(df) 
                  # 행렬로 변경시 하나의 데이터형태로 바뀜
 
-comb6 <- comb4[1:3]
-comb6
-comb5
-groups <- split(comb5, comb6)
-groups
-
 #############################################################
 
-# 2) 기초 통계
+# 2) 데이터프레임 다루기
+
+# 데이터프레임 열 분할하기 - split ( df , vec ) ; df의 열 수와 같은 vec사용 추천
+comb1 <- data.frame(col1 = c(1,1,2,2),
+                    col2 = c(3,4,5,6),
+                    col3 = c(6,7,8,9))
+comb1
+a <- c('첫번째','두번째','세번째','네번째')
+b <- c('반복1','반복2','반복3')
+split_group1 <- split(comb1, a)
+split_group1
+
+split_group2 <- split(comb5,b)
+split_group2 # b벡터원소가 3개 -> comb5의 마지막열은 b벡터 첫번째 원소에 입력되게 된다.
+
+library(MASS)
+Cars93
+sp <- split(Cars93$MPG.city, Cars93$Origin)
+sp
+
+# 데이터프레임 각 변수를 하나의 컬럼으로 정렬 - stack ( data.frame ( df ) )
+# long data(dity data) / database에서 선호하는 형식 / group by 연산 용이 / join 가능
+data("trees")
+trees
+sta_trees <- stack(trees)
+sta_trees
+unstack(sta_trees) # 두번째 열의 값을 컬럼으로 하는 데이터프레임 생성
+
+# unstack ( df , value ~ column )
+# wide data / 교차테이블 / 행별, 컬럼별 그룹연산 가능 / join 불가능
+unst_trees <- unstack(trees, Volume ~ Height)
+unst_trees # 데이터 중복값이 중구난방이라서 리스트 형태로 출력됨
+
+comb1
+unstack(comb1, col2 ~ col1)
+
+
+# 3) 기초 통계
 
 # 평균값 - mean ( 변수 )
 y <- c(1,2,40,41,42,43)

@@ -18,7 +18,7 @@
 - 리스트를 사용하여 데이터프레임 만들기 - df <- as.data.frame(list)
 - 행 이름 변경 - rownames( df ) <- c ( 'row1', 'row2' )
 - 열 이름 변경 - colnames( df ) <- c ( 'column1', 'column2' )
-- 데이터프레임 할당 - data.frame(col1 = numeric(N), col2 = character(N), ...)
+- 데이터프레임 만들기 - data.frame(col1 = numeric(N), col2 = character(N), ...)
 - 행으로 합치기 - rbind(벡터, 리스트, 데이터프레임, ...)
 - 열로 합치기 - cbind( 벡터, 리스트, 데이터프레임, ... )
 - 데이터프레임 병합 - merge(df1, df2, by = '공통 column')
@@ -72,8 +72,12 @@
     c) data.frame -> matrix
       - as.matrix(df)
 
+## 2) 데이터프레임 다루기
+- 데이터프레임 열 분할하기 - split ( df , vec )
+- 데이터프레임 각 변수를 하나의 컬럼으로 정렬 - stack ( data.frame ( df ) )
+- 
 
-## 2) 기초통계
+## 3) 기초통계
 - 평균값 - mean ( 변수 )
 - 합계 - sum ( 변수 )
 - 중앙값 - median ( 변수 )
@@ -103,6 +107,7 @@
 - 행열 차원 출력 - dim ( 행열변수 )
 - 행열 대각선값 출력 - diag( 행열변수 )
 - 특정 행/열/원소값 출력 - matrix [ 행수 , 열수 ]
+- 배열 만들기 - dim ( 행열변수 ) <- c ( 행수 , 열수 , 차원1, ... )
 - 결과값을 파일로 저장하고 생성 - sink() 함수 / cat( ' ' , file = ' ' )
 - 파일 목록 보기 - list.files()
 - 테이블로 된 파일 읽기 - read.table('파일명', sep = '구분자')
