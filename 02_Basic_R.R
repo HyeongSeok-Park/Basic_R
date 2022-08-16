@@ -36,6 +36,18 @@ V2[1]
 V2[c(1,2)] # 1번째, 2번째 원소값 출력
 V2[-3] # 3번째 원소값만 제외하고 출력
 
+# 요소 - fct <- factor(  )
+# 범주형 데이터 타입을 표현하기 위해 만들어진 타입
+fct <- factor(c('a','a','b','b','b','c'))
+fct
+
+# 요소를 기준으로 함수 적용 - tapply(vec, factor, func)
+vec1 <- c(1,1,4,4,4,6)
+vec2 <- c(5,4,1,4,2,6)
+fct
+tapply(vec1, fct, mean)
+tapply(vec2, fct, sum)
+
 # 리스트 - L <- list(  ,  ,  )
 # 리스트의 경우 여러 자료형(숫자, 문자)의 원소들이 포함될 수 있다.
 L1 <- list(1,2,'3'); names(L) <- c('Moe', 'Larry', 'Curly')
@@ -115,6 +127,76 @@ b <- 1:12
 dim(b) <- c(2,3,2)
 b
 
+# 행렬에 함수 적용 - apply ( df , 기준 축, func )
+# 행렬 연산 순서 [1,1] -> [1,2] ... [n,n]
+a
+apply(a, 1, function(x) x+1) # 출력 형태 column 기준
+apply(a, 2, function(x) x+1) # 출력 형태 row 기준 (기존 행렬과 같은 형태로 출력)
+
+##############################################################################
+
+# 난수 생성
+
+# 평균 n, 표준 편차 sd인 정규 분포를 따르는 난수 n개 생성 - rnorm(n, mean=0, sd=1)
+rnorm(10, mean=5, sd=1) # 평균 n, 표준 편차 sd인 정규 분포를 따르는 난수 n개 발생
+
+# 최소값 min, 최대값 max인 균등 분포를 따르는 난수 n개 생성 - runif(n, min=0, max=1)
+runif(10, min=0, max=10)
+
+# 람다값이 lambda인 포아송 분포를 따르는 난수 n개 생성 - rpois(n, lambda)
+rpois(10, 4)
+
+# 람다가 rate인 지수 분포를 따르는 난수 n개 생성 - rexp(n, rate)
+rexp(10, 4)
+
+##############################################################################
+
+# 문자열 날짜 다루기
+
+# 문자열 길이 - nchar( ' 문자열 ' )
+m <- c('Hellow world')
+nchar('가나다라 마바 사 아')
+nchar(m)
+
+# 구분자로 문자 나누기 또는 연결 - paste( 문자1, 문자2, ..., sep = '구분자' )
+paste(1,2,3, sep = '-')
+paste('A', c('b','c'), sep = '$ ')
+paste(c('a', 'd'), c('b','c'), sep = '$ ')
+paste('the pi is approximately', pi)
+
+# 특정 숫자나 변수 반복 - rep ( 숫자/변수 , time/each = 반복횟수)
+rep(1:4, time = 3) # 해당 변수 전체를 3번 반복
+rep(1:4, each = 3) # 해당 개별 변수를 3번씩 반복
+
+# 문자열 추출 - substr('문자열',시작,끝)
+substr('Hellow world',1,8)
+
+# 구분자로 문자열 추출 - strsplit ( 문자열 , 구분자 )
+strsplit('Hellow; wor;ld', ';')
+
+# 하위 문자열 대체 - sub( 이전, 변경, 문자열 )
+sub('world','Korea','Hellow world')
+gsub('world','Korea','Hellow world')
+
+# 다수의 문자열 합치기 - outer ( 문자열1, 문자열2, ... , sep = ' 구분자 ')
+outer('Hellow world', 'Hellow Korea', paste, sep=' ')
+
+##############################################################################
+
+# 날짜
+Sys.Date() # 현재 날짜로 출력
+as.Date() # 날짜 객체로 출력
+format(Sys.Date(),format = '%y/%m/%d') # 날짜 형태 변경
+format(Sys.Date(),'%a') # 현재 요일 조회
+format(Sys.Date(),'%B') # 현재 월 조회
+format(Sys.Date(),'%b') # 축약된 월 조회
+format(Sys.Date(),'%m') # 두 자리수 월 조회
+format(Sys.Date(),'%d') # 두 자리수 일 조회
+format(Sys.Date(),'%Y') # 네 자리수 연도 조회
+format(Sys.Date(),'%y') # 두 자리수 연도 조회
+
+##############################################################################
+
 # 결과값을 파일로 저장하고 생성 - sink() 함수 / cat( ' ' , file = ' ' )
 # sink()
 sink('test1.txt') # 출력값을 test1.txt에 기록 시작
@@ -162,14 +244,6 @@ t <- readHTMLTable(url)
 data("women")
 women
 
-# 특정 숫자나 변수 반복 - rep ( 숫자/변수 , time/each = 반복횟수)
-rep(1:4, time = 3) # 해당 변수 전체를 3번 반복
-rep(1:4, each = 3) # 해당 개별 변수를 3번씩 반복
-
-# 구분자로 문자 나누기 - paste( 문자1, 문자2, ..., sep = '구분자' )
-paste(1,2,3, sep = '-')
-paste('A', c('b','c'), sep = '$ ')
-paste(c('a', 'd'), c('b','c'), sep = '$ ')
 
 # for문 활용
 for (i in 1:10) { # print()
@@ -178,10 +252,5 @@ for (i in 1:10) { # print()
 for (i in 1:10) { # cat()
   cat('\t#',i,'번째 작업중')
 }
-
-
-
-
-
 
 
