@@ -211,6 +211,9 @@ as.matrix(comb5) # as.matrix(df)
 
 # 2) 데이터프레임 다루기
 
+# 데이터프레임 행과 열 수 확인 - dim ( df )
+dim(comb5)
+
 # 데이터프레임 열 분할하기 - split ( df , vec ) ; df의 열 수와 같은 vec사용 추천
 comb1 <- data.frame(col1 = c(1,1,2,2),
                     col2 = c(3,4,5,6),
@@ -255,8 +258,57 @@ lapply(comb1, function(x) x*2)
 lapply(iris[,1:4], mean)
 sapply(iris[,1:4], mean)
 
+# 결측치 개별 확인 - is.na( 변수 )
+library(MASS)
+Cars93
+is.na(Cars93) # 결측치를 TURE로 출력
 
-by(comb1, )
+# 결측치 총합 확인 - sum( is.na ( 변수 ) )
+sum(is.na(Cars93)) # 해당 데이터프레임에 존재하는 총 결측치 수 출력
+
+# 결측치 column별 확인 - colSums ( is.na ( 변수 ) )
+colSums(is.na(Cars93)) # 각 column 별로 존재하는 총 결측치 수 출력
+
+# 결측치를 제외 명령어 - na.rm = T/TRUE
+sum(Cars93$Luggage.room, na.rm = T) # 결측치를 제외한 총 합을 출력
+sum(Cars93$Luggage.room) # 결측지가 있으면 NA로 출력됨
+
+# 결측치가 있는 행 삭제 - na.omit( 변수 )
+Cars93_1 <- na.omit(Cars93)
+Cars93_1
+colSums(is.na(Cars93))
+colSums(is.na(Cars93_1))
+
+# 특정 영역에서 결측치를 포함하는 행 삭제 - df[ complete.cases( df[행,열] ), ]
+dim(Cars93)
+colSums(is.na(Cars93))
+Cars93_2 <- Cars93[ complete.cases(Cars93[ , c('Rear.seat.room')])  , ]
+sum(is.na(Cars93_2))
+Cars93_2 <- Cars93[ complete.cases(Cars93[ , c('Luggage.room')])  , ]
+sum(is.na(Cars93_2)) # Rear.seat.room에서 결측치가 행이 Luggage.room에서 결측치가 있는 행과 같은 행이다. 따라서 Luggage.room 행 삭제 시 모든 결측치가 제거되는 것으로 보임.
+
+# 결측치 치환 - df$col1[ is.na( df$col1 ) ] # 앞쪽과 뒤쪽의 범위가 같아야함
+Cars93_3 <- Cars93
+Cars93_3$Luggage.room[is.na(Cars93_3$Luggage.room)] <- 0
+Cars93_3$Luggage.room
+sum(is.na(Cars93_3$Luggage.room))
+
+sum(is.na(Cars93_3))
+Cars93_3[is.na(Cars93_3)] <- 0 # 데이터프레임 전체에 적용 가능
+sum(is.na(Cars93_3))
+
+# 각 결측치를 각 변수 별 평균값으로 일괄 대체 - sapply(df, func(x) ifelse(is.na(x), mean(x, na.rm=TRUE), x))
+Cars93_4 <- Cars93[,c('Luggage.room','Rear.seat.room')]
+Cars93_4
+sum(is.na(Cars93_4))
+sapply(Cars93_4, function(x) mean(x, na.rm = T)) # 데이터프레임 열 별로 함수 적용
+Cars93_4 <- sapply(Cars93_4, function(x) ifelse(is.na(x), mean(x, na.rm=T), x))
+Cars93_4
+sum(is.na(Cars93_4))
+
+
+####################################################################
+
 
 # 3) 기초 통계
 
@@ -274,8 +326,11 @@ median(y)
 # 분산 - var ( 변수 )
 var(y)
 
-# 표준편차 - sd ( 변수 )
+# 표준편차1 - sd ( 변수 )
 sd(y)
+
+# 표준편차2 - sqrt ( var ( 변수 ) )
+sqrt(var(Cars93_3$Luggage.room))
 
 # 공분산 - cov ( 변수1, 변수2)
 #  2개의 확률변수의 선형 관계를 나타내는 값. 만약 2개의 변수중 하나의 값이 상승하는 경향을 보일 때 다른 값도 상승하는 선형 상관성이 있다면 양수의 공분산을 가진다.

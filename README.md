@@ -71,20 +71,29 @@
       - as.matrix(df)
 
 ## 2) 데이터프레임 다루기
+- 데이터프레임 행과 열 수 확인 - dim ( df )
 - 데이터프레임 열 분할하기 - split ( df , vec )
 - 데이터프레임 변수를 하나의 컬럼으로 정렬 - stack ( data.frame ( df ) )
 - 데이터프레임 형태 변경 - unstack ( df , value ~ column )
 - 데이터프레임에 함수 적용 - sapply ( df , func )
 - 데이터프레임에 함수 적용하여 리스트 형태로 출력 - lapply ( df , func )
-- 
-- 
+- 결측치 개별 확인 - is.na( 변수 )
+- 결측치 총합 확인 - sum( is.na ( 변수 ) )
+- 결측치 column별 확인 - colSums ( is.na ( 변수 ) )
+- 결측치를 제외 명령어 - na.rm = T/TRUE
+- 결측치가 있는 행 삭제 - na.omit( 변수 )
+- 특정 영역에서 결측치를 포함하는 행 삭제 - df[ complete.cases( df[행,열] ), ]
+- 결측치 치환 - df$col1[ is.na( df$col1 ) ]
+- 각 결측치를 각 변수 별 평균값으로 일괄 대체 - sapply(df, func(x) ifelse(is.na(x), mean(x, na.rm=TRUE), x))
+
 
 ## 3) 기초통계
 - 평균값 - mean ( 변수 )
 - 합계 - sum ( 변수 )
 - 중앙값 - median ( 변수 )
 - 분산 - var ( 변수 )
-- 표준편차 - sd ( 변수 )
+- 표준편차1 - sd ( 변수 )
+- 표준편차2 - sqrt ( var ( 변수 ) )
 - 공분산 - cov ( 변수1, 변수2)
 - 상관계수 - cor ( 변수1, 변수2 )
 
