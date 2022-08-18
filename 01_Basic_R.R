@@ -128,7 +128,10 @@ comb5
 comb5[grep('g', comb5$col2, ignore.case=F), c(1:3)]
 
 # 데이터프레임 조회3 - subset(df, select=(출력할 column), subset=(조건식))
+# select : column 설정
+# subset : row 설정
 subset(comb5, select=c(1,2), subset=(col1 < 3 & col3 > 5))
+subset(comb5, subset=(col1>=2))
 
 # 데이터프레임 열 제거 - subset( df, select = '-col' )
 comb5

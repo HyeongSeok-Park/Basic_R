@@ -102,7 +102,9 @@ df2[3,2]
 
 # 행열 만들기 - matrix( data, 행수, 열수) / dim ( 행열변수 ) <- c ( 행수 , 열수)
 a <- matrix(1:20, 4, 5)
-a
+a 
+a_1 <- matrix(1:20, ncol=5, nrow=4, byrow=T)
+a_1
 
 b <- 1:8
 dim(b) <- c(2,4)
@@ -244,7 +246,6 @@ t <- readHTMLTable(url)
 data("women")
 women
 
-
 # for문 활용
 for (i in 1:10) { # print()
   print(i)
@@ -253,4 +254,11 @@ for (i in 1:10) { # cat()
   cat('\t#',i,'번째 작업중')
 }
 
+# 함수 사용 예시 - function(x,y)
+f <- function(x,y) return((x-y)^2)
+f(1:3,3)
 
+
+x <- 1:100
+x
+sum(x>50)

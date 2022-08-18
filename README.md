@@ -157,6 +157,7 @@
 - library(XML) / url <- ' 주소 ' / t <- readHTMLTable(url)
 - R에 내장된 데이터 불러오기 - data ( ' ' )
 - for문 활용
+- 함수 사용 예시 - function(x,y)
 
 
 # 사용환경
