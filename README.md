@@ -162,6 +162,10 @@
 
 # 03_plyr_R
 - ddply ( df, 기준column, func, group data)
+  1) transfrom()
+  2) mutate()
+  3) summarise() / summarize()
+  4) subset()
 
 
 
