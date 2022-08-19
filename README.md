@@ -160,6 +160,11 @@
 - 함수 사용 예시 - function(x,y)
 
 
+# 03_ddply_R
+- ddply ( df, 기준column, func, group data)
+
+
+
 # 사용환경
 R studio  
  - 64 bit 윈도우 환경
