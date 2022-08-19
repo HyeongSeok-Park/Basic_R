@@ -160,7 +160,7 @@
 - 함수 사용 예시 - function(x,y)
 
 
-# 03_ddply_R
+# 03_plyr_R
 - ddply ( df, 기준column, func, group data)
 
 
