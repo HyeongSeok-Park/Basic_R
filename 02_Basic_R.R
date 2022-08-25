@@ -10,6 +10,12 @@ library(help=AID)
 # 웹을 통해 AID패키지의 다큐먼트를 보여준다.
 help(package=AID)
 
+# 변수설정
+x <- 1
+y <- 4
+x
+y
+
 # Combine 함수 - c( )
 x <- c(a,b,1,2,3)
 x

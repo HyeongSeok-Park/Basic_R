@@ -3,11 +3,14 @@
 
 # 1) 기초 R
 
-# 변수설정
-x <- 1
-y <- 4
-x
-y
+# 데이터 요약 - summary(df)
+data("trees")
+trees
+summary(trees)
+
+# 6행까지 데이터 출력 - head(df)
+head(trees)
+head(trees, 6)
 
 # 현재 생성된 변수들 출력 - ls()
 ls()
@@ -283,7 +286,7 @@ colSums(is.na(Cars93))
 colSums(is.na(Cars93_1))
 
 # 특정 영역에서 결측치를 포함하는 행 삭제 - df[ complete.cases( df[행,열] ), ]
-dim(Cars93)
+dim(Cars93) # Python에서 shape와 같음
 colSums(is.na(Cars93))
 Cars93_2 <- Cars93[ complete.cases(Cars93[ , c('Rear.seat.room')])  , ]
 sum(is.na(Cars93_2))
@@ -308,7 +311,6 @@ sapply(Cars93_4, function(x) mean(x, na.rm = T)) # 데이터프레임 열 별로
 Cars93_4 <- sapply(Cars93_4, function(x) ifelse(is.na(x), mean(x, na.rm=T), x))
 Cars93_4
 sum(is.na(Cars93_4))
-
 
 ####################################################################
 
@@ -341,12 +343,10 @@ cov(y, z)
 
 # 상관계수 - cor ( 변수1, 변수2 )
 # 변수간의 관계의 정도와 방향을 하나의 수치로 요약해 표시해 주는 지표. 상관계수는 -1에서 1 사이의 값으로 나타낸다. 이때 0에 가까울수록 상관관계는 낮아지는 것이며, -1이나 +1에 가까울수록 상관관계는 높아진다.
-cor(y, z)
-
-# 데이터 요약 - summary(df)
-data("trees")
-trees
-summary(trees)
-
-# 6행까지 데이터 출력 - head(df)
-head(trees)
+install.packages("corrplot")
+library(corrplot)
+iris
+data <- iris[,1:4]
+data
+cor_iris <- cor(data)
+cor_iris

@@ -3,7 +3,8 @@
 # 01_Basic_R
 
 ## 1) 기초 R
-- 변수 설정 - x <- 1
+- 데이터 요약 - summary(df)
+- 6행까지 데이터 출력 - head(df)
 - 현재 생성된 변수들 출력 - ls()
 - 현재 생성된 변수와 타입 모두 출력 - ls.str()
 - 특정 변수 초기화 - rm( 변수 )
@@ -102,6 +103,7 @@
 - 유용한 패키지 설치 - install.packages('AID', '경로')
 - 패키지 목록 확인1 - library(help=AID)
 - 패키지 목록 확인2 - help(package=AID)
+- 변수 설정 - x <- 1
 - Combine 함수 - c( )
 - 벡터 - V
 - 벡터에 데이터 추가 - V[length(V)+1] <- 원소 / append(벡터,원소,after = n)
