@@ -140,6 +140,12 @@ subset(comb5, subset=(col1>=2))
 comb5
 subset(comb5, select=-col1)
 
+# 데이터프레임 열 추가 - data.frame( df, vec )
+comb5
+new_col <- c(11, 12, 13, 14)
+new_comb5 <- data.frame(comb5, new_col)
+new_comb5
+
 # 데이터프레임 NA 포함하는 행 삭제 - na.omit( df )
 na.omit(comb5)
 

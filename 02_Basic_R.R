@@ -12,9 +12,13 @@ help(package=AID)
 
 # 변수설정
 x <- 1
-y <- 4
+y <- '4'
 x
 y
+
+# 변수 유형(타입) 확인 - class ( )
+class(x)
+class(y)
 
 # Combine 함수 - c( )
 x <- c(a,b,1,2,3)
@@ -65,6 +69,9 @@ L1$Moe
 
 L2 <- list(a=1, b=2, c=3)
 L2
+
+# 리스트 구조 확인 - str ( L )
+str(L1)
 
 # 리스트 내 값 출력 - L [ [ i ] ]
 L2[[1]]

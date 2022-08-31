@@ -25,6 +25,7 @@
 - 데이터프레임 조회2 - df[grep('value', df$col), c(출력할 column)]
 - 데이터프레임 조회3 - subset(df, select=(출력할 column), subset=(조건식))
 - 데이터프레임 열 제거 - subset( df, select = '-col' )
+- 데이터프레임 열 추가 - data.frame( df, vec )
 - 데이터프레임 NA 포함하는 행 삭제 - na.omit( df )
 - 자료형 데이터 형태 변환 
   1) as.charater
@@ -104,6 +105,7 @@
 - 패키지 목록 확인1 - library(help=AID)
 - 패키지 목록 확인2 - help(package=AID)
 - 변수 설정 - x <- 1
+- 변수 유형(타입) 확인 - class ( )
 - Combine 함수 - c( )
 - 벡터 - V
 - 벡터에 데이터 추가 - V[length(V)+1] <- 원소 / append(벡터,원소,after = n)
@@ -111,6 +113,7 @@
 - 요소 - fct <- factor(  )
 - 요소를 기준으로 함수 적용 - tapply(vec, factor, func)
 - 리스트 - L <- list(  ,  ,  )
+- 리스트 구조 확인 - str ( L )
 - 리스트 내 값 출력 - L [ [ i ] ]
 - 리스트에서 특정 원소 제거 - L [ [ ' ' ] ] <- NULL
 - 리스트에서 NULL 원소 제거 - 검증작업 필요
