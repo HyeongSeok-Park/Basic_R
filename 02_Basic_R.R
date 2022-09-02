@@ -10,6 +10,30 @@ library(help=AID)
 # 웹을 통해 AID패키지의 다큐먼트를 보여준다.
 help(package=AID)
 
+# 현재 작업 중인 경로 확인 - getwd ( )
+getwd()
+
+# 경로 변경 - setwd ( 경로 )
+setwd("E:/R/files/Basic_R")
+getwd()
+
+# csv 파일 불러오기 - read.csv( ' 파일명 ' )
+# 엑셀 파일 불러오기 - read_excel( ' 파일명 ' , skip = 1 )
+install.packages('readxl') # 패키지 설치 필요
+library(readxl)
+read_excel('파일명', skip = 1) # 첫 행 제외하고 출력
+# txt 파일 불러오기 - read.table( ' 파일명 ' , sep = ' 구분자 ' )
+read.table('') # tab으로 구분된 경우
+read.table('', sep = ';') # 세미콜론(;)으로 구분된 경우
+read.table('', sep = ',') # 쉼표(,)로 구분된 경우
+# 그 외 불러오기 옵션 - stringsAsFactors = F / na = ' - ' / header = T
+read.csv('', stringsAsFactors = F) # 데이터를 불러올때 문자는 문자형으로 반환
+# R에서는 데이터를 불러올때 문자가 있는 열은 무조건 범주형으로 반환한다.
+read.csv('', na = '-') # 불러올 데이터가 '-'인 경우 결측치로 반환
+read.csv('', header = F) # 첫 행을 헤더로 하지 않는다
+# 엑셀파일을 불러올땐 첫 행을 자동으로 헤더로 인식
+# txt파일을 불러올땐 헤더가 없는 것으로 인식
+
 # 변수설정
 x <- 1
 y <- '4'
@@ -19,6 +43,9 @@ y
 # 변수 유형(타입) 확인 - class ( )
 class(x)
 class(y)
+
+# 엑셀 형태로 출력 - View ( )
+View(y)
 
 # Combine 함수 - c( )
 x <- c(a,b,1,2,3)

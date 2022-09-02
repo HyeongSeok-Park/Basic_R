@@ -98,14 +98,23 @@
 - 표준편차2 - sqrt ( var ( 변수 ) )
 - 공분산 - cov ( 변수1, 변수2)
 - 상관계수 - cor ( 변수1, 변수2 )
+- 빈도 분석 - table ( )
+- 빈도 비율 구하기 - prop.table ( )
 
 
 # 02_Basic_R
 - 유용한 패키지 설치 - install.packages('AID', '경로')
 - 패키지 목록 확인1 - library(help=AID)
 - 패키지 목록 확인2 - help(package=AID)
+- 현재 작업 중인 경로 확인 - getwd ( )
+- 경로 변경 - setwd ( 경로 )
+- csv 파일 불러오기 - read.csv( ' 파일명 ' )
+- 엑셀 파일 불러오기 - read_excel( ' 파일명 ' , skip = 1 )
+- txt 파일 불러오기 - read.table( ' 파일명 ' , sep = ' 구분자 ' )
+- 그 외 불러오기 옵션 - stringsAsFactors = F / na = ' - ' / header = T
 - 변수 설정 - x <- 1
 - 변수 유형(타입) 확인 - class ( )
+- 엑셀 형태로 출력 - View ( )
 - Combine 함수 - c( )
 - 벡터 - V
 - 벡터에 데이터 추가 - V[length(V)+1] <- 원소 / append(벡터,원소,after = n)
