@@ -9,11 +9,10 @@
 - 현재 생성된 변수와 타입 모두 출력 - ls.str()
 - 특정 변수 초기화 - rm( 변수 )
 - 현재 설정된 변수 모두 초기화 - rm(list=ls())
-- 하나의 객체만 출력 - print( 변수 )
-- 여러 객체를 동시에 출력 - cat(변수1, 변수2, ... )
-- 연속된 정수 표현 - (시작숫자) : (마지막숫자) / seq(from , to , by) / seq(from , to , length.out)
-- 백터 원소 선택 - 벡터변수 [ index수 ]
-- 변수길이 - length ( 변수 )
+- 문자와 숫자 등을 연결하여 출력 - paste( ) / paste0( )
+- 변수 값 각각에 대해 일치하는 패턴값 출력 - grepl('패턴' , 변수 )
+- 변수 값 각각에 대해 일치하는 패턴 인덱스 출력 - grep('패턴', 변수 )
+- 패턴을 찾아 해당값을 수정 후 출력 - gsub( '패턴', '수정값', 변수 )
 - 리스트를 사용하여 데이터프레임 만들기 - df <- as.data.frame(list)
 - 행 이름 변경 - rownames( df ) <- c ( 'row1', 'row2' )
 - 열 이름 변경 - colnames( df ) <- c ( 'column1', 'column2' )
@@ -88,7 +87,6 @@
 - 결측치 치환 - df$col1[ is.na( df$col1 ) ]
 - 각 결측치를 각 변수 별 평균값으로 일괄 대체 - sapply(df, func(x) ifelse(is.na(x), mean(x, na.rm=TRUE), x))
 
-
 ## 3) 기초통계
 - 평균값 - mean ( 변수 )
 - 합계 - sum ( 변수 )
@@ -113,7 +111,12 @@
 - txt 파일 불러오기 - read.table( ' 파일명 ' , sep = ' 구분자 ' )
 - 그 외 불러오기 옵션 - stringsAsFactors = F / na = ' - ' / header = T
 - 변수 설정 - x <- 1
+- 객체 출력 - print( 변수 )
+- 여러 객체를 동시에 출력 - cat(변수1, 변수2, ... )
+- 연속된 정수 표현 - (시작숫자) : (마지막숫자) / seq(from , to , by) / seq(from , to , length.out)
 - 변수 유형(타입) 확인 - class ( )
+- 백터 원소 선택 - 벡터변수 [ index수 ]
+- 변수길이 - length ( 변수 )
 - 엑셀 형태로 출력 - View ( )
 - Combine 함수 - c( )
 - 벡터 - V

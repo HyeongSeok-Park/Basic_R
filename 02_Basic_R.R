@@ -40,9 +40,31 @@ y <- '4'
 x
 y
 
+# 객체 출력 - print( 변수 )
+a <- 3
+b <- 5
+print(a,b)
+
+# 여러 객체를 동시에 출력 - cat(변수1, 변수2, ... )
+cat(a,'b')
+
+# 연속된 정수 표현 - (시작숫자) : (마지막숫자) / seq(from , to , by) / seq(from , to , length.out)
+1:5
+6:-3
+seq(from = 0, to = 20, by = 2)
+seq(from = 0, to = 20, length.out = 3) # length.out : 지정한 값으로 등분함
+
 # 변수 유형(타입) 확인 - class ( )
 class(x)
 class(y)
+
+# 백터 원소 선택 - 벡터변수 [ index수 ]
+x <- c(1,2,3,4,5)
+x[1] # R에서는 '1'부터 시작한다. (Python은 '0'부터 시작)
+x[-2] # 해당 자리수를 제외하고 모두 출력
+
+# 변수길이 - length ( 변수 )
+length(x)
 
 # 엑셀 형태로 출력 - View ( )
 View(y)

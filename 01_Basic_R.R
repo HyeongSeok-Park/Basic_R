@@ -26,27 +26,42 @@ ls()
 rm(list=ls())
 ls()
 
-a <- 3
-b <- 5
-# 하나의 객체만 출력 - print( 변수 )
-print(a,b)
+# 문자와 숫자 등을 연결하여 출력 - paste( ) / paste0( )
+paste('A', '+', 1, '등급')
+paste('2학년', c('1반', '2반', '3반'), sep = '-')
+paste(1:4, '학기', sep = '') # paste는 기본적으로 문자 간에 공백이 추가된다.
+paste0(1:4, '학기') # paste0는 paste의 문자 간 공백을 없앤 명령어
 
-# 여러 객체를 동시에 출력 - cat(변수1, 변수2, ... )
-cat(a,'b')
+# 변수 값 각각에 대해 일치하는 패턴값 출력 - grepl('패턴' , 변수 )
+text <- c('통계', '데이터', '데이터분석', 'R과 통계')
+text %in% c('통계') # 정확히 일치하는 값만 TRUE로 출력
+grepl('통계', text) # 입력한 패턴이 일치하는 변수는 모두 TRUE로 출력
+!grepl('통계', text) # 위의 명령어와 반대로 출력
+grepl('통계|분석', text)
 
-# 연속된 정수 표현 - (시작숫자) : (마지막숫자) / seq(from , to , by) / seq(from , to , length.out)
-1:5
-6:-3
-seq(from = 0, to = 20, by = 2)
-seq(from = 0, to = 20, length.out = 3) # length.out : 지정한 값으로 등분함
+longtext <- '가나다라마바사 .@$# Product_id=P9938&ABCD 21fa'
+grepl('.*Product_id=(P[0-9]{4}).*', longtext) # 정규표현식 ( .* ) : 어떤 문자(길이제한 없음)
 
-# 백터 원소 선택 - 벡터변수 [ index수 ]
-x <- c(1,2,3,4,5)
-x[1] # R에서는 '1'부터 시작한다. (Python은 '0'부터 시작)
-x[-2] # 해당 자리수를 제외하고 모두 출력
+# 변수 값 각각에 대해 일치하는 패턴 인덱스 출력 - grep('패턴', 변수 )
+grep('통계', text)
+grep('통계', text, value = T) # value 옵션 : 해당 값을 그대로 출력
+grep('통계', text, value = T, invert = T) # invert 옵션 : 해당 패턴에 반대로 출력
+grep('[가-싷]{2,}', text) # 정규표현식 [가-싷] : ㄱ~ㅅ 사이의 한글 2자 이상
+grep('[[:alpha:]]', text) # 정규표현식 [[:alpha:]] : 모든 언어 (한글 영어 등)
+grep('[^가-힣]', text) # 정규표현식 [^가-힣] : 한글이나 공백 외의 문자를 포함하는 문자열 출력
+grep('^[a-zA-Z]', text, value=T) # 정규표현식 ^[a-zA-Z] : 영어로 시작하는 문자열
+grep('[가-힣]$', text, value=T) # 정규표현식 [가-힣]$ : 한글로 끝나는 문자열
 
-# 변수길이 - length ( 변수 )
-length(x)
+# 패턴을 찾아 해당값을 수정 후 출력 - gsub( '패턴', '수정값', 변수 )
+text2 <- c('가나다라1234@$#!!', 'XVbb.1', '1243145', 'A/Z', '가 나 다 라')
+gsub('[[:punct:]]', '-', text2) # 정규표현식 [[:punct:]] : 키보드에 있는 특수문자
+gsub('[0-9]{3,}', '###', text2)
+
+gsub('.*Product_id=(P[0-9]{4}).*', '\\1', longtext) # 정규표현식 ( \\1 ) : 바로 앞에 정의한 패턴 중 첫 번째 소괄호의 내용 출력
+
+address <- c('수성구 동성로1길 34', '달서구 효성공원로4길 3')
+gsub('[[:alpha:]]{2,} ([[:alnum:]]{2,}) [0-9]{1,}', '\\1', address) # 공백을 구간분리하는데 활용
+
 
 # 리스트를 사용하여 데이터프레임 만들기 - df <- as.data.frame(list)
 new1 <- data.frame(a=1, b=2, c='3')
@@ -373,3 +388,4 @@ prop.table(mpg_trans_drv, 1) # 행의 비율 합 = 1
 prop.table(mpg_trans_drv, 2) # 열의 비율 합 = 1
 round(prop.table(mpg_trans_drv), 2)
 
+####################################################################
