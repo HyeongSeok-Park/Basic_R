@@ -372,20 +372,4 @@ data
 cor_iris <- cor(data)
 cor_iris
 
-# 빈도 분석 - table ( )
-install.packages('ggplot2')
-library(ggplot2)
-mpg
-table(mpg$trans) # 범주형 데이터 빈도 수 출력
-table(mpg$trans, mpg$drv)
-
-# 빈도 비율 구하기 - prop.table ( )
-mpg_trans <- table(mpg$trans)
-prop.table(mpg_trans) # 각 범주형 데이터의 비율 출력
-mpg_trans_drv <- table(mpg$trans, mpg$drv)
-prop.table(mpg_trans_drv)    # 전체 집단(행, 열 모두)의 비율 합 = 1
-prop.table(mpg_trans_drv, 1) # 행의 비율 합 = 1
-prop.table(mpg_trans_drv, 2) # 열의 비율 합 = 1
-round(prop.table(mpg_trans_drv), 2)
-
 ####################################################################

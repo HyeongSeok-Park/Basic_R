@@ -96,8 +96,6 @@
 - 표준편차2 - sqrt ( var ( 변수 ) )
 - 공분산 - cov ( 변수1, 변수2)
 - 상관계수 - cor ( 변수1, 변수2 )
-- 빈도 분석 - table ( )
-- 빈도 비율 구하기 - prop.table ( )
 
 
 # 02_Basic_R
@@ -177,13 +175,18 @@
 - 함수 사용 예시 - function(x,y)
 
 
-# 03_plyr_R
+# 03_Package_R
+
+## 1) plyr 패키지 - ddplyr
 - ddply ( df, 기준column, func, group data)
   1) transfrom()
   2) mutate()
   3) summarise() / summarize()
   4) subset()
-
+  
+## 2) ggplot2 패키지
+- 빈도 분석 - table ( )
+- 빈도 비율 구하기 - prop.table ( )
 
 
 # 사용환경
