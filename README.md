@@ -45,7 +45,7 @@
       - 참고 : 데이터프레임 축 변경 - t(df)
       
   2) list 형태로 변경
-    - as.list(vec/mat/df)
+      - as.list(vec/mat/df)
     
   3) vector 형태로 변경
     a) list -> vector 
