@@ -3,8 +3,9 @@
 # 01_Basic_R
 
 ## 1) 기초 R
-- 데이터 요약 - summary(df)
-- 6행까지 데이터 출력 - head(df)
+- 데이터 요약 - summary( df )
+- 6행까지 데이터 출력 - head( df )
+- column 명 불러오기 및 수정 - names ( df )
 - 현재 생성된 변수들 출력 - ls()
 - 현재 생성된 변수와 타입 모두 출력 - ls.str()
 - 특정 변수 초기화 - rm( 변수 )
@@ -73,6 +74,8 @@
 
 ## 2) 데이터프레임 다루기
 - 데이터프레임 행과 열 수 확인 - dim ( df )
+- 데이터프레임 열 수 확인 - ncol ( df )
+- 데이터프레임 행 수 확인 - nrow ( df )
 - 데이터프레임 열 분할하기 - split ( df , vec )
 - 데이터프레임 변수를 하나의 컬럼으로 정렬 - stack ( data.frame ( df ) )
 - 데이터프레임 형태 변경 - unstack ( df , value ~ column )

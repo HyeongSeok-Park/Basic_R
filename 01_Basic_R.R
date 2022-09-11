@@ -3,16 +3,23 @@
 
 # 1) 기초 R
 
-# 데이터 요약 - summary(df)
+# 데이터 요약 - summary( df )
 data("trees")
 trees
 summary(trees)
 
-# 6행까지 데이터 출력 - head(df)
+# 6행까지 데이터 출력 - head( df )
 head(trees)
 head(trees, 6)
 
-# 현재 생성된 변수들 출력 - ls()
+# column 명 불러오기 및 수정정 - names ( df )
+trees_1 <- trees
+trees_1
+names(trees_1)
+names(trees_1) <- paste0('No',1:3)
+head(trees_1)
+
+# 현재 생성된 변수들 출력 - ls( )
 ls()
 
 # 현재 생성된 변수와 타입 모두 출력 - ls.str()

@@ -147,6 +147,12 @@ df1
 df2 <- data.frame(x=1:3, y=c('Tom','Yoon','Kim'))
 df2
 
+# 데이터프레임 열 수 확인 - ncol ( df )
+ncol(df2)
+
+# 데이터프레임 행 수 확인 - nrow ( df )
+nrow(df2)
+
 # 데이터프레임 열값 불러오기 - df[ ' i ' ] / df [ [ ' i '] ] / df [ , 열번호]
 df2[1]
 df2[2]
@@ -320,7 +326,10 @@ for (i in 1:10) { # cat()
 f <- function(x,y) return((x-y)^2)
 f(1:3,3)
 
-
 x <- 1:100
 x
 sum(x>50)
+
+sample <- read.csv("E:/R/files/R_practice/data/sample1.csv")
+sample
+
