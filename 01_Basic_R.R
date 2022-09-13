@@ -128,18 +128,28 @@ comb4 <- cbind(df1,df2, new1)
 comb4 # cbind의 경우 행(row)의 수만 같으면 서로 다른 유형끼리도 합칠 수 있다.
 
 # 데이터프레임 병합 - merge(df1, df2, by = '공통 column')
-df3 <- data.frame(new1, new2)
+new5 <- c(1,3,5,7)
+df3 <- data.frame(new1, new2, new5)
 df3
 df4 <- data.frame(new1, new4)
 df4
-comb5 <- merge(df4,df3,by='new1') 
+comb5 <- merge(df3,df4,by='new1')
 comb5 # 데이터프레임 입력 순서에 따라 생성값의 형태가 달라짐
 
-new1 <- c(1,2,11,12)
-df5 <- data.frame(new1,new3)
-df5
-comb6 <- merge(comb5, df5, by='new1')
-comb6 # 해당 컬럼에서 같은 값이 있는 행만 합쳐진다.
+## merge 옵션
+merge_test1 <- merge(df3, df4, by.x = 'new5', by.y = 'new1') # 기준이 되는 column 개별로 설정
+merge_test1 # column명은 df3(x 데이터)을 따른다.
+
+df4[1] <- c(1,3,4,5)
+merge_test2 <- merge(df3, df4, all.x = T) # df3(x 데이터) column을 기준으로 결합
+merge_test2
+merge_test3 <- merge(df3, df4, all.y = T) # df4(y 데이터) column을 기준으로 결합
+merge_test3
+merge_test4 <- merge(df3, df4, all = T) # 공통된 column의 모든 값이 나오도록 결합
+merge_test4
+names(df4) <- c('가','나')
+merge_test5 <- merge(df3, df4, all.x = T)
+merge_test5 # 공통된 colum이 없어서 df4를 반복하여 결합
 
 # 데이터프레임 조회1 - df [df$col1 <= 3(조건식), c(레코드 변수;col index)]
 comb5
