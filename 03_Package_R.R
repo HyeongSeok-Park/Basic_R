@@ -34,7 +34,28 @@ ddply(df_iris, .(Species), subset, Sepal.Length==max(Sepal.Length))
 
 ######################################################################
 
-# 2) ggplot2 패키지
+# 2) dplyr 패키지
+# data frame을 핸들링할 때 사용
+
+install.packages('dplyr')
+library(dplyr)
+
+# 조건을 이용해서 데이터 추출 - filter ( )
+head(iris, 4)
+filter(iris, Sepal.Length >= 6.5)
+
+# 해당 컬럼값을 기준으로 정렬 - arrange ( )
+arrange(iris, Sepal.Length, Species) # 1차 Sepal.Length 기준으로 정렬, 2차 Species 기준으로 정렬 (오름차순이 기본값)
+arrange(iris, desc(Sepal.Width)) # desc( column ) 해당 컬럼 내림차순으로 정렬
+
+# 집단별로 요약하기 - group_by ( ) / summarise ( )
+iris %>%
+  group_by(Species) %>%
+  summarise(mean_Sepal.Length = mean(Sepal.Length))
+
+######################################################################
+
+# 3) ggplot2 패키지
 # 데이터나 요약 결과를 그래프로 시각화할 때 사용
 
 # 빈도 분석 - table ( )
@@ -52,3 +73,14 @@ prop.table(mpg_trans_drv)    # 전체 집단(행, 열 모두)의 비율 합 = 1
 prop.table(mpg_trans_drv, 1) # 행의 비율 합 = 1
 prop.table(mpg_trans_drv, 2) # 열의 비율 합 = 1
 round(prop.table(mpg_trans_drv), 2)
+
+######################################################################
+
+# 연습 자료
+
+checkout <- read.csv("E:/R/files/R_practice/data/checkout.csv")
+customer <- read.csv("E:/R/files/R_practice/data/customer.csv")
+merchant <- read.csv("E:/R/files/R_practice/data/merchant.csv")
+
+
+

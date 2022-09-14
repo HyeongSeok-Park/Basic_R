@@ -186,8 +186,13 @@
   2) mutate()
   3) summarise() / summarize()
   4) subset()
-  
-## 2) ggplot2 패키지
+
+## 2) dplyr 패키지
+- 조건을 이용해서 데이터 추출 - filter ( )
+- 해당 컬럼값을 기준으로 정렬 - arrange ( )
+- 집단별로 요약하기 - group_by ( ) / summarise ( )
+
+## 3) ggplot2 패키지
 - 빈도 분석 - table ( )
 - 빈도 비율 구하기 - prop.table ( )
 
