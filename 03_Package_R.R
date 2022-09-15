@@ -44,14 +44,40 @@ library(dplyr)
 head(iris, 4)
 filter(iris, Sepal.Length >= 6.5)
 
+# 데이터 테이블 관측치 정돈 후 출력 - tibble ( )
+iris %>% 
+  filter(Sepal.Length >= 6.5) %>%
+  tibble() # 코드 마지막에 해당 명령어를 덧붙여 출력 (또는 as_tibble())
+# 첫 행에 데이터 크기 표시
+# 콘솔창에 관측치를 10개만 출력
+# column명 아래에 데이터 형식 출력 (<dbl>은 double을 의미)
+
 # 해당 컬럼값을 기준으로 정렬 - arrange ( )
 arrange(iris, Sepal.Length, Species) # 1차 Sepal.Length 기준으로 정렬, 2차 Species 기준으로 정렬 (오름차순이 기본값)
 arrange(iris, desc(Sepal.Width)) # desc( column ) 해당 컬럼 내림차순으로 정렬
 
-# 집단별로 요약하기 - group_by ( ) / summarise ( )
+# 데이터 요약 값 출력 - summarise ( )
+iris %>%
+  summarise(sum(Sepal.Length))
+
+iris %>%
+  summarise(total = sum(Sepal.Width)) # column명 지정 가능
+
+# 데이터 갯수 출력 - n ( )
+iris %>%
+  summarise(n()) # n() 괄호안에 column명을 넣으면 오류 발생
+dim(iris) # row 값 출력
+
+# 데이터 갯수 출력(중복값 제외) - n_distinct ( )
+iris %>%
+  summarise(n1 = n(), # 쉼표로 column 추가 가능
+            n2 = n_distinct(Petal.Length)) 
+
+# 집단별로 요약하기 - group_by ( )
 iris %>%
   group_by(Species) %>%
   summarise(mean_Sepal.Length = mean(Sepal.Length))
+
 
 ######################################################################
 
@@ -75,6 +101,7 @@ prop.table(mpg_trans_drv, 2) # 열의 비율 합 = 1
 round(prop.table(mpg_trans_drv), 2)
 
 ######################################################################
+
 
 # 연습 자료
 

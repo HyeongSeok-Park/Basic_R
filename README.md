@@ -189,8 +189,12 @@
 
 ## 2) dplyr 패키지
 - 조건을 이용해서 데이터 추출 - filter ( )
+- 데이터 테이블 관측치 정돈 후 출력 - tibble ( )
 - 해당 컬럼값을 기준으로 정렬 - arrange ( )
-- 집단별로 요약하기 - group_by ( ) / summarise ( )
+- 데이터 요약 값 출력 - summarise ( )
+- 데이터 갯수 출력 - n ( )
+- 데이터 갯수 출력(중복값 제외) - n_distinct ( )
+- 집단별로 요약하기 - group_by ( )
 
 ## 3) ggplot2 패키지
 - 빈도 분석 - table ( )
