@@ -39,9 +39,11 @@ paste('2학년', c('1반', '2반', '3반'), sep = '-')
 paste(1:4, '학기', sep = '') # paste는 기본적으로 문자 간에 공백이 추가된다.
 paste0(1:4, '학기') # paste0는 paste의 문자 간 공백을 없앤 명령어
 
-# 변수 값 각각에 대해 일치하는 패턴값 출력 - grepl('패턴' , 변수 )
+# 변수와 완전히 일치하는 값 찾기 - %in%
 text <- c('통계', '데이터', '데이터분석', 'R과 통계')
 text %in% c('통계') # 정확히 일치하는 값만 TRUE로 출력
+
+# 변수와 일치하는 패턴을 가진 값 찾기 - grepl('패턴' , 변수 )
 grepl('통계', text) # 입력한 패턴이 일치하는 변수는 모두 TRUE로 출력
 !grepl('통계', text) # 위의 명령어와 반대로 출력
 grepl('통계|분석', text)
@@ -49,7 +51,7 @@ grepl('통계|분석', text)
 longtext <- '가나다라마바사 .@$# Product_id=P9938&ABCD 21fa'
 grepl('.*Product_id=(P[0-9]{4}).*', longtext) # 정규표현식 ( .* ) : 어떤 문자(길이제한 없음)
 
-# 변수 값 각각에 대해 일치하는 패턴 인덱스 출력 - grep('패턴', 변수 )
+# 변수와 일치하는 패턴을 가진 값 인덱스 출력 - grep('패턴', 변수 )
 grep('통계', text)
 grep('통계', text, value = T) # value 옵션 : 해당 값을 그대로 출력
 grep('통계', text, value = T, invert = T) # invert 옵션 : 해당 패턴에 반대로 출력

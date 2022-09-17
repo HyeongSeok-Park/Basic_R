@@ -78,6 +78,21 @@ iris %>%
   group_by(Species) %>%
   summarise(mean_Sepal.Length = mean(Sepal.Length))
 
+# 중복값을 제거한 목록 만들기 - distinct ( )
+iris %>%
+  distinct(Species)
+
+# %in%식 활용
+iris %>%
+  filter(Petal.Length %in% c(1.4, 1.5))
+
+# grepl() 함수 활용
+iris %>%
+  distinct(Species) %>%
+  filter(grepl('a',Species))
+
+iris %>%
+  filter(grepl('1$', Sepal.Width)) # Sepal.Width에서 1로 끝나는 값 출력
 
 ######################################################################
 
@@ -110,4 +125,5 @@ customer <- read.csv("E:/R/files/R_practice/data/customer.csv")
 merchant <- read.csv("E:/R/files/R_practice/data/merchant.csv")
 
 
+1 %in% c(1,2,3)
 
