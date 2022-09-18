@@ -82,9 +82,15 @@ iris %>%
 iris %>%
   distinct(Species)
 
-# %in%식 활용
+# %in% / between 활용
 iris %>%
   filter(Petal.Length %in% c(1.4, 1.5))
+
+iris %>%
+  filter(between(Petal.Length, 1.4, 1.5))
+
+iris %>%
+  filter(Petal.Length >= 1.4 & Petal.Length <= 1.5)
 
 # grepl() 함수 활용
 iris %>%

@@ -197,7 +197,7 @@
 - 데이터 갯수 출력(중복값 제외) - n_distinct ( )
 - 집단별로 요약하기 - group_by ( )
 - 중복값을 제거한 목록 만들기 - distinct ( )
-- %in%식 활용
+- %in% / between 활용
 - grepl() 함수 활용
 
 ## 3) ggplot2 패키지
