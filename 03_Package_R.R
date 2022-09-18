@@ -75,8 +75,18 @@ iris %>%
 
 # 집단별로 요약하기 - group_by ( )
 iris %>%
+  group_by(Species)
+
+iris %>%
   group_by(Species) %>%
-  summarise(mean_Sepal.Length = mean(Sepal.Length))
+  summarise(n = n())
+
+iris %>%
+  count(Species) # group_by(Species) %>% summarise(n = n())와 같음
+
+iris %>%
+  group_by(Species) %>%
+  print(n = 30) # 출력값을 30개로 출력
 
 # 중복값을 제거한 목록 만들기 - distinct ( )
 iris %>%
@@ -90,7 +100,15 @@ iris %>%
   filter(between(Petal.Length, 1.4, 1.5))
 
 iris %>%
-  filter(Petal.Length >= 1.4 & Petal.Length <= 1.5)
+  filter(Petal.Length >= 1.4 & Petal.Length <= 1.5) %>%
+  summarise(n = n())
+
+iris %>%
+  filter(Petal.Length >= 1.4 & Petal.Length <= 1.5) %>%
+  count() # summarise(n = n())와 같은 결과 출력
+
+iris %>%
+  filter(between(Petal.Length, 1.4, 1.5) & Petal.Width >= 0.3)
 
 # grepl() 함수 활용
 iris %>%
@@ -99,6 +117,7 @@ iris %>%
 
 iris %>%
   filter(grepl('1$', Sepal.Width)) # Sepal.Width에서 1로 끝나는 값 출력
+
 
 ######################################################################
 
